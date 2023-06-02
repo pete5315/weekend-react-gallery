@@ -34,8 +34,9 @@ function App() {
   const addLike = (id, data) => {
     //will need to send an id and the current number of likes
     data++; //increase the number of likes by 1 before sending
+    console.log(data);
     axios
-      .put(`/gallery/like/${id}`, data) //id tells the server what data to update, data has the new number of likes
+      .put(`/gallery/like/${id}`, {data}) //id tells the server what data to update, data has the new number of likes
       .then((response) => {
         getGallery(); //update the DOM after we update the number of likes on the server
       })
