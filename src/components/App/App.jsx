@@ -59,5 +59,5 @@ function App() {
     </div>
   );
 }
-//export it so index.js has something to call
+//export it so App.jsx has something to call
 export default App;
