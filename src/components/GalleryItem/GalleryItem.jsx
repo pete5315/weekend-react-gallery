@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './GalleryItem.css'
 
-function GalleryItem({ item }) {
+function GalleryItem({ item, addLike }) {
   const [selected, setSelected] = useState(true);
   console.log(item);
   return (
@@ -19,7 +19,7 @@ function GalleryItem({ item }) {
           </div>
         )}
       </div>
-      <button className="loveIt">love it!</button>
+      <button className="loveIt" onClick={ () => addLike(item.id, item.likes)}>love it!</button>
       <p>{item.likes} people love this!</p>
     </div>
   );

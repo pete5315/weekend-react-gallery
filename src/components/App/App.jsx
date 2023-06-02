@@ -10,7 +10,6 @@ function App() {
 
   useEffect(() => {
     getGallery()
-    console.log(gallery);
   }, [])
 
   const getGallery = () => {
@@ -24,12 +23,25 @@ function App() {
       })
   }
 
+  const addLike = (id, data) => {
+    console.log(id);
+    data++
+    axios.put(`/gallery/like/${id}`, data)
+      .then(response => {
+        getGallery()
+      })
+      .catch(err => {
+        alert('error sending like');
+        console.log(err);
+      })
+  }
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
-        <GalleryList galleryList={gallery} />
+        <GalleryList galleryList={gallery} addLike={addLike}/>
       </div>
     );
 }
