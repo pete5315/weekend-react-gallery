@@ -2,6 +2,8 @@
 import { useState } from "react";
 //import the local styling so the grid items have good spacing and sizing
 import './GalleryItem.css'
+import * as React from 'react';
+import Button from '@mui/material/Button';
 //this function is invoked by GalleryList.jsx
 function GalleryItem({ item, addLike, deleteItem }) { //props includes the item that is being added and the addLike function
   const [selected, setSelected] = useState(true); //boolean variable that will track whether an item has been 
@@ -30,8 +32,8 @@ function GalleryItem({ item, addLike, deleteItem }) { //props includes the item 
       </div>
       </div>
       {/* like button that should initiate a put request to update likes when pressed */}
-      <button className="loveIt" onClick={ () => addLike(item.id, item.likes)}>love it!</button>
-      <button className="deleteIt" onClick={ () => deleteItem(item.id)}>delete it!</button>
+      <Button variant="contained" color="success" className="loveIt" onClick={ () => addLike(item.id, item.likes)}>love it!</Button>
+      <Button variant="contained" color="error" className="deleteIt" onClick={ () => deleteItem(item.id)}>delete it!</Button>
       {/* display the number of likes for the image */}
       <p>{item.likes} people love this!</p>
     </div>
