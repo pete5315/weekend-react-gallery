@@ -28,6 +28,7 @@ function GalleryItem({ item, addLike, deleteItem }) { //props includes the item 
         )}
         //
       </div>
+      </div>
       {/* like button that should initiate a put request to update likes when pressed */}
       <button className="loveIt" onClick={ () => addLike(item.id, item.likes)}>love it!</button>
       <button className="deleteIt" onClick={ () => deleteItem(item.id)}>delete it!</button>
