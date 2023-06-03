@@ -6,6 +6,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 //import the gallery list component which will hold
 import GalleryList from "../GalleryList/GalleryList";
+//import the gallery form component which will hold
+import GalleryPost from "../GalleryPost/GalleryPost";
+
 
 //main app
 function App() {
@@ -46,16 +49,48 @@ function App() {
         console.log(err);
       });
   };
+  //function to add pictures
+  const addItem = (data) => {
+    console.log(data);
+    axios
+      .post(`/gallery/`, {data}) //data has the information to be updated
+      .then((response) => {
+        getGallery(); //update the DOM after we add a photo to the server
+      })
+      .catch((err) => {
+        //error catching
+        alert("error sending like");
+        console.log(err);
+      });
+  };
+
+  const deleteItem = (id) => {
+    axios
+      .delete(`/gallery/`+id) //address for the item to be deleted
+      .then((response) => {
+        getGallery(); //update the DOM after we add a photo to the server
+      })
+      .catch((err) => {
+        //error catching
+        alert("error sending like");
+        console.log(err);
+      });
+  };
+
+
   //return the information that will be added to the DOM
   return (
     //classnames included to style the components that live in this file
     <div className="App">
+      
       {/* the header could be separated into a component but it is very small bit of code. */}
       <header className="App-header">
         <h1 className="App-title">Gallery of My Life</h1>
       </header>
+      <header>Input form</header>
+      <GalleryPost addItem={addItem}/>
       {/* call the GalleryList component so it can get all the images */}
-      <GalleryList galleryList={gallery} addLike={addLike} />
+      <GalleryList galleryList={gallery} addLike={addLike} deleteItem={deleteItem} />
     </div>
   );
 }

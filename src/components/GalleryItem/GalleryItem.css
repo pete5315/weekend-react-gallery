@@ -1,12 +1,12 @@
 img {
-  height: 200px;
-  width: 200px;
+  height: 100%;
+  width: 33vw;
   margin: 10px;
 }
 
 .flipBox {
-  height: 200px;
-  width: 200px;
+  height: 33vh;
+  width: 33vw;
   margin: 10px;
   border: solid black;
 }
