@@ -40,4 +40,38 @@ router.get('/', (req, res) => {
       })
 }); // END GET Route
 
+// POST Route
+router.post('/', (req, res) => {
+  console.log(req.body.data.path, req.body.data.description);
+  let sqlText = `INSERT INTO "list" ("path", "description")  VALUES ($1, $2);`;
+  //send the query to SQL
+  pool.query(sqlText, [req.body.data.path, req.body.data.description])
+  //if SQL doesn't error
+  .then( (result) => {
+      console.log('Image added')
+      res.sendStatus(200);
+  })
+  //if SQL DOES error
+  .catch( (error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+  })}); // END POST Route
+
+// DELETE Route
+router.delete('/:id', (req, res) => {
+  const galleryId = req.params.id;
+  let sqlText = `DELETE FROM "list" WHERE id = $1;`;
+  //send the query to SQL
+  pool.query(sqlText, [galleryId])
+  //if SQL doesn't error
+  .then( (result) => {
+      console.log('Image added')
+      res.sendStatus(200);
+  })
+  //if SQL DOES error
+  .catch( (error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+  })}); // END POST Route
+
 module.exports = router;

@@ -3,11 +3,13 @@ import { useState } from "react";
 //import the local styling so the grid items have good spacing and sizing
 import './GalleryItem.css'
 //this function is invoked by GalleryList.jsx
-function GalleryItem({ item, addLike }) { //props includes the item that is being added and the addLike function
+function GalleryItem({ item, addLike, deleteItem }) { //props includes the item that is being added and the addLike function
   const [selected, setSelected] = useState(true); //boolean variable that will track whether an item has been 
   //clicked an even or odd number of times so it can show the picture or the text
+  console.log(item);
   return (
     <div>
+      <div className="imagebox">
       <div
         className="imagebox"
         key={item.id}
@@ -19,8 +21,8 @@ function GalleryItem({ item, addLike }) { //props includes the item that is bein
           // if selected is true, show the image
           <img src={item.path}></img> 
         ) : (
-          // if selected is false, show the text
           <div>
+          // if selected is false, show the text
             <div className="flipBox">{item.description}</div>
           </div>
         )}
@@ -28,6 +30,7 @@ function GalleryItem({ item, addLike }) { //props includes the item that is bein
       </div>
       {/* like button that should initiate a put request to update likes when pressed */}
       <button className="loveIt" onClick={ () => addLike(item.id, item.likes)}>love it!</button>
+      <button className="deleteIt" onClick={ () => deleteItem(item.id)}>delete it!</button>
       {/* display the number of likes for the image */}
       <p>{item.likes} people love this!</p>
     </div>

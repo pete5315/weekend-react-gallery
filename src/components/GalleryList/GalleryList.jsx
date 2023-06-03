@@ -12,7 +12,7 @@ function GalleryList(props) {
       <div className="galleryWrapper">
         {props.galleryList.map((item) => (
           // the map method will iterate over the galleryList array, adding a GalleryItem component for each element in the array
-          <GalleryItem item={item} key={item.id} addLike={props.addLike} />
+          <GalleryItem item={item} key={item.id} addLike={props.addLike} deleteItem={props.deleteItem} />
           // GalleryItem needs a key and to pass down the addLike function and item object
         ))}
       </div>
