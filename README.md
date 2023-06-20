@@ -1,3 +1,5 @@
+Weekend assignment to practice creating React components based on user inputted data.
+
 # Project Name
 
 [Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
